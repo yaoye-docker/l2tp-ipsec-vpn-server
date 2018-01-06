@@ -35,6 +35,14 @@ if [ -z "$VPN_NETWORK_INTERFACE" ]; then
   VPN_NETWORK_INTERFACE="eth0"
 fi
 
+if [ -z "$VPN_DNS1" ]; then
+  VPN_DNS1="8.8.8.8"
+fi
+
+if [ -z "$VPN_DNS2" ]; then
+  VPN_DNS2="8.8.4.4"
+fi
+
 if [ `cat /sys/class/net/$VPN_NETWORK_INTERFACE/operstate` == "down" ]; then
   echo "Network interface '$VPN_NETWORK_INTERFACE' is not available. Aborting."
   exit 1
@@ -109,8 +117,8 @@ conn xauth-psk
   auto=add
   leftsubnet=0.0.0.0/0
   rightaddresspool=192.168.43.10-192.168.43.250
-  modecfgdns1=8.8.8.8
-  modecfgdns2=8.8.4.4
+  modecfgdns1=$VPN_DNS1
+  modecfgdns2=$VPN_DNS2
   leftxauthserver=yes
   rightxauthclient=yes
   leftmodecfgserver=yes
@@ -148,8 +156,8 @@ EOF
 cat > /etc/ppp/options.xl2tpd <<EOF
 ipcp-accept-local
 ipcp-accept-remote
-ms-dns 8.8.8.8
-ms-dns 8.8.4.4
+ms-dns $VPN_DNS1
+ms-dns $VPN_DNS2
 noccp
 auth
 crtscts
@@ -230,6 +238,7 @@ IPsec VPN server is now ready for use!
 
 Connect to your new VPN with these details:
 
+DNS: $VPN_DNS1
 Server IP: $PUBLIC_IP
 IPsec PSK: $VPN_IPSEC_PSK
 Users credentials :
