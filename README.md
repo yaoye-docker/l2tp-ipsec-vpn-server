@@ -106,7 +106,7 @@ docker exec -it l2tp-ipsec-vpn-server ipsec status
 
 ### Scaleway user information
 
-Scaleway use own modified kernel version `4.4` by default. This kernel isn't compatible with IPsec. If you want to use IPsec VPN server on Scaleway VPS you should switch version of kernel (version `4.8` or `higher`).
+[Scaleway](https://www.scaleway.com/) use own modified kernel version `4.4` by default. This kernel isn't compatible with IPsec. If you want to use IPsec VPN server on [Scaleway](https://www.scaleway.com/) VPS you should switch version of kernel (version `4.8` or `higher`).
 
 ## Next Steps
 
