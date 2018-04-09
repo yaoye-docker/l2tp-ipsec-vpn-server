@@ -1,6 +1,6 @@
 # IPsec VPN Server on Docker
 
-[![Docker Stars](https://img.shields.io/docker/stars/fcojean/l2tp-ipsec-vpn-server.svg)](https://hub.docker.com/r/fcojean/l2tp-ipsec-vpn-server) 
+[![Docker Stars](https://img.shields.io/docker/stars/fcojean/l2tp-ipsec-vpn-server.svg)](https://hub.docker.com/r/fcojean/l2tp-ipsec-vpn-server)
 [![Docker Pulls](https://img.shields.io/docker/pulls/fcojean/l2tp-ipsec-vpn-server.svg)](https://hub.docker.com/r/fcojean/l2tp-ipsec-vpn-server)
 
 Docker image to run an IPsec VPN server, with support for both `IPsec/L2TP` and `IPsec/XAuth ("Cisco IPsec")`.
@@ -12,7 +12,7 @@ This docker image is based on [Lin Song work](https://github.com/hwdsl2/docker-i
 * Multiple VPN users declaration support
 * Native NAT Transversal support
 * No waiting time before a user can reconnect in case of disconnection support
-* Custom network interface support 
+* Custom network interface support
 
 ## Install Docker
 
@@ -103,6 +103,10 @@ To check the status of your IPsec VPN server, you can pass `ipsec status` to you
 ```
 docker exec -it l2tp-ipsec-vpn-server ipsec status
 ```
+
+### Scaleway user information
+
+[Scaleway](https://www.scaleway.com/) © use own modified kernel version `4.4` by default. This kernel isn't compatible with IPsec. If you want to use IPsec VPN server on [Scaleway](https://www.scaleway.com/) © VPS you should switch version of kernel (version `4.8` or `higher`).
 
 ## Next Steps
 
